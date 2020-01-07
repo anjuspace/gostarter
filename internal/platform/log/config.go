@@ -11,4 +11,13 @@ type Config struct {
 
 	// NoColor makes sure that no log output gets colorized.
 	NoColor bool
+
+	// EnableFile saves logs to a file
+	EnableFile bool
+
+	// EnableConsole  actives console to print out logs
+	EnableConsole bool
+
+	// FileLocation is the path of log file
+	FileLocation string
 }

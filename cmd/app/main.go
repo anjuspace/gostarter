@@ -49,14 +49,15 @@ func main() {
 	err = v.Unmarshal(&config)
 	emperror.Panic(errors.Wrap(err, "failed to unmarshal configuration"))
 	// Create logger (first thing after configuration loading)
-	logger := log.NewLogger(config.Log)
+
+	logger, _ := log.NewLogger(config.Log, log.InstanceZapLogger)
 
 	err = config.Validate()
 	if err != nil {
-		logger.Error(err.Error())
+		logger.Errorf(err.Error())
 
 		os.Exit(3)
 	}
 
-	logger.Info("Application started...")
+	logger.Infof("Application started...")
 }

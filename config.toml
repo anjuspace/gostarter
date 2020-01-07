@@ -5,3 +5,5 @@ shutdownTimeout = "15s"
 [log]
 format = "json"
 level = "info"
+enableconsole = true
+enablefile = ture
