@@ -1,0 +1,7 @@
+environment = "production"
+debug = false
+shutdownTimeout = "15s"
+
+[log]
+format = "json"
+level = "info"
