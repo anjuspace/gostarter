@@ -1,6 +1,0 @@
-{"level":"info","ts":"2020-01-07T19:55:43.586Z","caller":"testing/testing.go:909","msg":"Zap is awesome","key1":"value1"}
-{"key1":"value1","level":"info","msg":"Logrus is awesome","time":"2020-01-07T19:55:54Z"}
-{"level":"debug","ts":"2020-01-07T19:56:42.584Z","caller":"testing/testing.go:909","msg":"Starting with zap","key1":"value1"}
-{"level":"info","ts":"2020-01-07T19:56:42.584Z","caller":"testing/testing.go:909","msg":"Zap is awesome","key1":"value1"}
-{"key1":"value1","level":"debug","msg":"Starting with logrus","time":"2020-01-07T19:56:42Z"}
-{"key1":"value1","level":"info","msg":"Logrus is awesome","time":"2020-01-07T19:56:42Z"}
