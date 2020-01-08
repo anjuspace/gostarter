@@ -10,8 +10,8 @@ func TestLogger(t *testing.T) {
 		Level:         Debug,
 		Format:        "json",
 		EnableFile:    true,
-
-		FileLocation: "log.log",
+		NoColor:       false,
+		FileLocation:  "log.log",
 	}
 	zapLogger, _ := NewLogger(config, InstanceZapLogger)
 	require.NotNil(t, zapLogger)

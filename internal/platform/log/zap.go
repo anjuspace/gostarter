@@ -40,16 +40,15 @@ func getZapLevel(level string) zapcore.Level {
 
 func newZapLogger(config Config) Logger {
 	cores := []zapcore.Core{}
-
+	writer := zapcore.Lock(os.Stdout)
+	level := getZapLevel(config.Level)
 	if config.EnableConsole {
-		level := getZapLevel(config.Level)
 		writer := zapcore.Lock(os.Stdout)
 		core := zapcore.NewCore(getEncoder(config.Format == "json"), writer, level)
 		cores = append(cores, core)
 	}
 
 	if config.EnableFile {
-		level := getZapLevel(config.Level)
 		writer := zapcore.AddSync(&lumberjack.Logger{
 			Filename: config.FileLocation,
 			MaxSize:  100,
@@ -57,6 +56,13 @@ func newZapLogger(config Config) Logger {
 			MaxAge:   28,
 		})
 		core := zapcore.NewCore(getEncoder(config.Format == "json"), writer, level)
+		cores = append(cores, core)
+	}
+
+	if !config.NoColor {
+		encoderConfig := zap.NewProductionEncoderConfig()
+		encoderConfig.EncodeLevel = zapcore.CapitalColorLevelEncoder
+		core := zapcore.NewCore(zapcore.NewConsoleEncoder(encoderConfig), writer, level)
 		cores = append(cores, core)
 	}
 
